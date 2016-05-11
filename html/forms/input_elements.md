@@ -1,0 +1,12 @@
+-form: the name of the type of html/page element that follows
+-input type text: lets user type in text, here it's for name
+-input type email: lets user type in email
+-input type password: lets user type in password
+-input type date: maybe uses a reserve form of date
+-input type checkbox: puts standard checkbox from directory
+-div: container that encapsulates page elements and divides it
+-label: title next to the drop down or input
+-button type submit: submits form 
+-fieldset: create a box around a section
+-select: make a dropdown menu
+-option: choices for dropdown menu
