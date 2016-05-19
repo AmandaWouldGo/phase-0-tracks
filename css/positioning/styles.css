@@ -3,3 +3,14 @@
 	margin-top: 200px;
 }
 
+#hat {
+	position: relative;
+	top: -410px;
+	left: 480px;
+}
+
+#glasses {
+	position: relative;
+	top: -191px;
+	left: 545px;
+}
