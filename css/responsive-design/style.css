@@ -3,6 +3,7 @@
 body {
   max-width: 960px;
   min-width: 600px;
+  margin: auto;
 }
 
 blockquote {
@@ -20,6 +21,7 @@ cite {
   width: 15%;
   display: inline-block;
   vertical-align: left;
+  float: left;
 }
 
 #main-content {
