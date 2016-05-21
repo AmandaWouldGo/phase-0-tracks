@@ -13,10 +13,23 @@ cite {
   margin-top: 10px;
 }
 
+#external-links {
+  width: 200px;
+  display: inline-block;
+  vertical-align: left;
+}
+
+#main-content {
+  width: 756px;
+  display: inline-block;
+  vertical-align: right;
+}
+
 #external-links ul {
   list-style-type: none;
   padding-left: 0px;
-}
+  width: 100px;
+} 
 
 /* you're welcome to edit the
 image, figure, and figcaption CSS if you'd like, 
