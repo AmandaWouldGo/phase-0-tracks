@@ -1,0 +1,23 @@
+body {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cd/Mars_atmosphere_2.jpg);
+  color: white;
+  background-size: contain;
+}
+
+section {
+  display: inline-block;
+  width: 48%;
+  vertical-align: top;
+}
+
+.column-1 {
+  font-family: Verdana;
+  color: blue;
+  background-color: red;
+}
+
+.column-2 {
+  font-family: cursive;
+  color: red;
+  background-color: blue;
+}
