@@ -1,0 +1,48 @@
+Release 0: Robot Elevator Ride Algorithm
+
+You are on the 1st floor of a building.
+If not standing near elevator
+    -find elevator
+Else if standing near elevator
+    -find rectangular button with up arrow on wall next to elevator
+        -press up arrow button
+    -wait until double doors of elevator open
+    -enter elevator through double doors and turn left until you see and can reach a panel with numbered buttons
+        -select at random a button between 2 and 5
+            -press selected button
+    -wait until double doors of elevator close
+        -If other passengers present
+            -do not look at other elevator passengers
+            -If other passenger tries to talk to you
+                -make half smile, shrug and say nothing
+    -wait until double doors of elevator open
+    -exit elevator
+
+Release 1: Make breakfast smoothie
+
+-Search through lower corner cabinet until find Ninja smoothie cup
+-Remove one Ninja smoothie cup from cabinet and place on counter
+-Search through small kitchen drawer until find a spoon
+-Remove one spoon from drawer and place on counter next to smoothie cup
+-Open freezer next to counter and remove from freezer bag of mixed berries and bag of bananas
+    -Place bag of mixed berries and bag of bananas on counter next to Ninja smoothie cup
+-Close freezer
+-Open fridge and remove from fridge peanut butter jar, kale, almond milk and apple juice
+    -Place peanut butter jar, kale, almond milk and apple juice on counter next to Ninja smoothie cup
+-Close fridge
+-Open bag of bananas, remove 1/2 banana from bag and place in smoothie cup, close bag of bananas
+-Open bag of mixed berries, remove 10 berries from bag and place in smoothie cup, close bag of mixed berries
+-Open peanut butter jar, use spoon to remove approximately 1 tablespoon of peanut butter, place 1 tablespoon of peanut butter in smoothie cup, close peanut butter jar, place spoon in sink
+-Remove 2 kale leaves from kale bunch place in smoothie cup
+-Remove lid from almond milk, pour approximately 1/2 cup almond milk into smoothie cup, replace lid on almond milk
+-Remove lid from apple juice, pour approximately 1/4 cup apple juice into smoothie cup, replace lid on apple juice
+-Carry full smoothie cup to counter space above corner cabinet, place next to blender
+-Find screw on blending attachment and tightly screw on to smoothie cup
+-Invert smoothie cup, place on blender, lock into blender attachement
+-Plug in blender, press button on blender with round ON symbol until it turns red, press and hold button with the word SINGLE on it for 15 seconds, let button go
+-Unplug blender, unlock inverted smoothie cup and turn over until blender attachment is on top, remove blender attachment from smoothie cup
+-place blender attachment in sink
+-Was blender attachment and spoon
+-Place fridge items in fridge and freezer items in freezer
+-Drink smoothie
+
