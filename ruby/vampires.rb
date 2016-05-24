@@ -12,3 +12,4 @@ garlic_bread = gets
 
 puts "Would you like to enroll in the company’s health insurance? "
 insurance = gets
+
