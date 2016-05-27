@@ -9,33 +9,14 @@ garlic_bread = gets.chomp
 puts "Would you like to enroll in the company’s health insurance? Y or N"
 insurance = gets.chomp
 
-def vampire_checker(variable)
-	vampire_check = ""
-	vampire_check += "Probably not a vampire" if (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "Y") && (insurance == "Y"))
-		puts vampire_check
-	vampire_check += "Probably a vampire." if (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "N") || (insurance == "N"))
-		puts vampire_check
-	vampire_check += "Almost certainly a vampire." if (2016 - birth_year.to_i != age.to_i) && ((garlic_bread == "N") && (insurance == "N"))
-		puts vampire_check
-	if name == "Drake Cula" || name == "Tu Fang" 
-		puts "Definitely a vampire."
-	else
-		puts "Results inconclusive."
-	end
+if (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "Y") && (insurance == "Y"))
+	print "Probably not a vamire."
+elsif (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "N") || (insurance == "N"))
+	print "Probably a vampire."
+elsif (2016 - birth_year.to_i != age.to_i) && ((garlic_bread == "N") && (insurance == "N"))
+	print "Almost certainly a vampire."
+elsif name == "Drake Cula" || name == "Tu Fang" 
+	print "Definitely a vampire."
+else
+	print "Results inconclusive."
 end
-
-	
-##If the employee got their age right, and is willing to eat garlic bread or sign up for insurance, the result is “Probably not a vampire.”
-##If the employee got their age wrong, and hates garlic bread or waives insurance, the result is “Probably a vampire.”
-#If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, the result is “Almost certainly a vampire.”
-#Even if the employee is an amazing liar otherwise, anyone going by the name of “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, you should print “Definitely a vampire.”
-#Otherwise, print “Results inconclusive.”
-
-#def restaurant_b(how_hungry_are_you)
- #  meal = ""
-  # meal += "Ribeye " if how_hungry_are_you >= 9
-   #meal += "Chicken " if how_hungry_are_you >= 7
-   #meal += "Soup " if how_hungry_are_you >= 4
-   #meal += "Salad " if how_hungry_are_you >= 1               
-#end
-
