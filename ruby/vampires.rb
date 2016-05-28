@@ -26,18 +26,19 @@ until employees_processed == employee_number.to_i
 			end
 		end
 		
-		
-		is_vamp = case
-			when (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "Y") || (insurance == "Y"))
+		if is_vamp = if (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "Y") || (insurance == "Y"))
 				puts "Probably not a vamire."
-			when (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "N") || (insurance == "N"))
+			end
+		elsif is_vamp = if (2016 - birth_year.to_i != age.to_i) && ((garlic_bread == "N") || (insurance == "N"))
 				puts "Probably a vampire."
-			when (2016 - birth_year.to_i == age.to_i) && ((garlic_bread == "N") && (insurance == "N"))
+			end
+		elsif is_vamp = if (2016 - birth_year.to_i != age.to_i) && ((garlic_bread == "N") && (insurance == "N"))
 				puts "Almost certainly a vampire."
-			when name === "Drake Cula" || name === "Tu Fang" 
+			end
+		elsif is_vamp = if name === "Drake Cula" || name === "Tu Fang" 
 				puts "Definitely a vampire."
-			else
-				puts "Results inconclusive."
+			end
+		else "Results inconclusive."
 		end
 		
 		employees_processed += 1
