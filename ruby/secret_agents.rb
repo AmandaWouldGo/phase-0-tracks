@@ -16,7 +16,7 @@ def encrypt(password)
     end
     index +=1
   end
-puts password
+p password
 end
 
 #Pseudo code for decrypt method
@@ -33,10 +33,11 @@ def decrypt(password)
   password[index] = alphabet[new_number]
   index += 1
   end
- puts password
+ p password
   end
 
 encrypt("abc")
 encrypt("zed")
 decrypt("bcd")
 decrypt("afe")
+decrypt(encrypt("swordfish"))
