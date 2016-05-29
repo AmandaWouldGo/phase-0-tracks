@@ -5,7 +5,11 @@
 def encrypt(password)
   index = 0
   while index < password.length
+    if password[index] == "z"
+       password[index] = "a"
+    else
     password[index] = password[index].next!
+    end
     if
       password[index] == "!"
       password[index] = " "
@@ -31,3 +35,8 @@ def decrypt(password)
   end
  puts password
   end
+
+encrypt("abc")
+encrypt("zed")
+decrypt("bcd")
+decrypt("afe")
