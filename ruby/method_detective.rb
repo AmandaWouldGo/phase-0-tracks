@@ -6,8 +6,6 @@
 
 # "iNvEsTiGaTiOn".<???>
 # => “InVeStIgAtIoN”
-#swapcase for temporary change
-#swapcase! for permanent change (Danger! dANGER!)
 "iNvEsTiGaTiOn".swapcase
 inv_test = "iNvEsTiGaTiOn".swapcase!
 inv_test
@@ -15,6 +13,7 @@ inv_test
 # "zom".<???>
 # => “zoom”
 "zom".insert(1, "o")
+"zom".insert(2, "o")
 
 # "enhance".<???>
 # => "    enhance    "
@@ -28,6 +27,7 @@ inv_test
 #=> "the usual suspects"
 "the usual".<<(" suspects")
 "the usual".concat(" suspects")
+"the usual" + " suspects"
 
 # " suspects".<???>
 # => "the usual suspects"
@@ -36,7 +36,6 @@ inv_test
 # "The case of the disappearing last letter".<???>
 # => "The case of the disappearing last lette"
 "The case of the disappearing last letter".chop
-
 
 # "The mystery of the missing first letter".<???>
 # => "he mystery of the missing first letter"
@@ -50,6 +49,11 @@ inv_test
 # => 122 
 # (What is the significance of the number 122 in relation to the character z?)
 "z".ord
+	#it is the decimal value of the letter "z" in ASCII
 
 # "How many times does the letter 'a' appear in this string?".<???>
 # => 4
+
+"How many times does the letter 'a' appear in this string?".count("a")
+
+
