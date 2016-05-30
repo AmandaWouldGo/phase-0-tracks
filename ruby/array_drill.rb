@@ -1,3 +1,16 @@
+def build_array(item1, item2, item3)
+	all = [item1, item2, item3]
+end
+
+def add_to_array(arr, value)
+	#ans = [] << value
+	#ans = [] + value doesn't work
+	#ans = [] + value.to_s
+	#ans = [] << value.to_s
+	#ans = arr << value.to_s
+	ans = arr << value
+end
+
 bird_toys = []
 p bird_toys
 
@@ -22,3 +35,10 @@ p bird_toys.include?("pen")
 toys = ["doll", "legos", "board games"]
 all_toys = bird_toys + toys
 p all_toys
+
+p build_array(1, "two", nil)
+
+p add_to_array([], "a")
+p add_to_array(["a", "b", "c", 1, 2], 3)
+p add_to_array([1, 2, 3, "a", "b"], "c")
+p add_to_array([1, 2, 3, "a"], ["b", "c"])
