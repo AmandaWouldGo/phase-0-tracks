@@ -7,14 +7,16 @@
 def interior_design
 puts "Enter your design client data"
 puts "Name:"
-
+name = gets.chomp
 puts "Age:"
-
+age = gets.chomp
 puts "Number of children:"
-
+kids = gets.chomp
 puts "Decor theme:"
-
+decor_theme = gets.chomp
 puts "Has a fireplace:"
+fireplace = gets.chomp
+
 #convert user input to appropriate data type
 #print has to screen when user has answered all q's
 
