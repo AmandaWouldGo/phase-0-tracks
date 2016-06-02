@@ -90,7 +90,9 @@ retaskets = {
 }
 
 retaskets[:retasket_family5][:grandchildren].push("Ariona")
+retaskets[:retasket_family5][:total_children] = 6
 
+p retaskets[:retasket_family5][:total_children]
 p retaskets[:retasket_family5][:grandchildren]
 p retaskets[:cook_family][:great_grands]
 p retaskets[:retasket_family1][:children][2]
