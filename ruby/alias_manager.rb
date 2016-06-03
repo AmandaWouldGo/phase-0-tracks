@@ -25,4 +25,44 @@ last_name = last_name.chars
 
 #advance vowel to next vowel
 
+#def next_vowel_first_name (START doesn't work because I need to figure out how to change each letter in array. It's a good start though!)
+	#index = 0
+	#vowels = "aeiou"
+	#while index < first_name.length
+	#	if first_name[index] == "u"
+	#		first_name[index] = "a"
+	#	else first_name[index] = first_name[index].next!
+	#	end
+	#while index < first_name.length
+	#	letters = first_name[index]
+	#	number = vowels.index(letters)
+	#	new_number = number - 1
+	#	first_name[index] = vowels[new_number]
+	#	index += 1
+#end
+
+
+
+
+#if statement for advancing vowel?
+	#look back at 4.6
+#while index < password.length
+    #if password[index] == "z"
+       #password[index] = "a"
+    #else
+    #password[index] = password[index].next!
+    #end
+#def decrypt(password)
+  #index = 0
+  #alphabet = "abcdefghijklmnopqrstuvwxyz"
+  #while index < password.length
+  #letters = password[index]
+  #number = alphabet.index(letters)
+  #new_number = number - 1
+  #password[index] = alphabet[new_number]
+  #index += 1
+  #end
+ #p password
+#end
+
 #write separate next_vowel method to combine with other methods...
