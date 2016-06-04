@@ -15,6 +15,7 @@ first_name = new_name[0].chars
 last_name = new_name[1].chars
 	#p first_name ["c", "o", "o", "k"] and p last_name ["a", "m", "a", "n", "d", "a"]
 
+#write block with not-DRY if statement to check for conditions at iterates through first_name and last_name separately
 first_name.map! do |letter|
 	if letter == "a"
 		letter = "e"
@@ -65,53 +66,14 @@ last_name.map! do |letter|
 	end
 end
 
-#first_name = first_name.join.capitalize!
-#last_name = last_name.join.capitalize!
+#use .join to make string from array and capitalize it, because it's a name.
+first_name = first_name.join.capitalize!
+last_name = last_name.join.capitalize!
 
-p first_name
-p last_name
+#p first_name
+#p last_name
 
+#use join to bring whole code_name together into one masterpiece
+code_name = first_name + ' ' + last_name
+p code_name
 
-#advance vowel to next vowel
-
-#def next_vowel_first_name (START doesn't work because I need to figure out how to change each letter in array. It's a good start though!)
-	#index = 0
-	#vowels = "aeiou"
-	#while index < first_name.length
-	#	if first_name[index] == "u"
-	#		first_name[index] = "a"
-	#	else first_name[index] = first_name[index].next!
-	#	end
-	#while index < first_name.length
-	#	letters = first_name[index]
-	#	number = vowels.index(letters)
-	#	new_number = number - 1
-	#	first_name[index] = vowels[new_number]
-	#	index += 1
-#end
-
-
-
-
-#if statement for advancing vowel?
-	#look back at 4.6
-#while index < password.length
-    #if password[index] == "z"
-       #password[index] = "a"
-    #else
-    #password[index] = password[index].next!
-    #end
-#def decrypt(password)
-  #index = 0
-  #alphabet = "abcdefghijklmnopqrstuvwxyz"
-  #while index < password.length
-  #letters = password[index]
-  #number = alphabet.index(letters)
-  #new_number = number - 1
-  #password[index] = alphabet[new_number]
-  #index += 1
-  #end
- #p password
-#end
-
-#write separate next_vowel method to combine with other methods...
