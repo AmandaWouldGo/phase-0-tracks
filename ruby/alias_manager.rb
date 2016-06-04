@@ -22,7 +22,15 @@ first_name.map! do |letter|
 	letter.next
 end
 
+last_name.map! do |letter|
+	letter.next
+end
+
+first_name = first_name.join
+
 p first_name
+p last_name
+
 
 #advance vowel to next vowel
 
