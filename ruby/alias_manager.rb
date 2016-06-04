@@ -5,6 +5,8 @@
 puts "Welcome, spy, enter your first and last name and I will make you a super secret new name:"
 
 def name_code
+	#make hash to store real and code names
+	#all_names = {}
 	#gets input from user
 	#add method that starts name_code over
 	def try_again
@@ -20,6 +22,8 @@ def name_code
 
 	real_name = gets.chomp.downcase
 	#swap first and last name
+	#send each real_name to hash all_names as key
+	
 	new_name = real_name.split(' ').reverse
 		#test print (p new_name => ["Cook", "Amanda"])
 
@@ -90,6 +94,9 @@ def name_code
 	#use join to bring whole code_name together into one masterpiece
 	code_name = first_name + ' ' + last_name
 	p "The world will now refer to you as: #{code_name}"
+	#send each code_name as value to hash all_names
+
+
 	try_again
 
 end
