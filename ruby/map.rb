@@ -4,14 +4,28 @@ puts "Original data:"
 p letters
 
 # iterate through the array with .map
-modified_letters = letters.map do |letter|
-  puts letter
-  letter.next
+letters.map do |letter|
+	puts letter 
+	letter.next
 end
 
 puts "After .map call:"
 p letters
-p modified_letters
+
+
+first_name = ["c", "o", "o", "k"]
+
+puts "First name used to be:"
+p first_name
+
+first_name.map! do |letter|
+	puts letter
+	letter.next
+end
+
+p first_name
+
+
 
 
 
