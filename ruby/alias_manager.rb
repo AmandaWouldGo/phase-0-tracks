@@ -5,6 +5,12 @@
 puts "Welcome, spy, enter your first and last name and I will make you a super secret new name:"
 
 def name_code
+	#make method to store real and code names in hash
+
+	def make_all_names(hash, real)
+		all_names[real] = []
+	end
+	
 	#make hash to store real and code names
 	all_names = {}
 	#gets input from user
@@ -108,6 +114,6 @@ def name_code
 
 		try_again
 	end
-end
+#end
 
 name_code
