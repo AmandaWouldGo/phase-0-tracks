@@ -5,6 +5,15 @@
 puts "Welcome, spy, enter your first and last name and I will make you a super secret new name:"
 
 def name_code
+	#make method to store real and code names in hash 
+		#(so far, I've been able to add names to hash, but it just replaces the name 
+		#rather than merging it with the hash. Felicia Torres and code_name are 
+		#replaced with Amanda Cook and code_name.)
+
+	def make_all_names(hash, real)
+		all_names[real] = []
+	end
+	
 	#make hash to store real and code names
 	all_names = {}
 	#gets input from user
@@ -102,12 +111,12 @@ def name_code
 		#end
 
 		#send each code_name as value to hash all_names
-		#all_names[real_name.to_sym] = "#{code_name}"
+		all_names[real_name.to_sym] = "#{code_name}"
 
 		p all_names
 
 		try_again
 	end
-end
+#end
 
 name_code
