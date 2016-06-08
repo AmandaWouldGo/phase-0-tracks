@@ -1,4 +1,7 @@
 class Santa
+	attr_reader :gender
+	attr_accessor :ethnicity
+	
 	def initialize(gender, ethnicity)
 		#p "Initializing Santa instance..."
 		@gender = gender
@@ -19,6 +22,30 @@ class Santa
 		puts "Acknowledging a Santa who is #{@gender} and #{@ethnicity}"
 		puts "Welcome to SantaCon 2016".center(34)
 		puts "____________________________________"
+	end
+
+	def celebrate_birthday
+		@age += 1
+	end
+
+	def get_mad_at(deer_name)
+		#takes deer_name as an argument and moves that deer's name to last place
+		#in the reindeer rankings.
+		#takes deer_name
+		#moves deer_name along array to last
+	end
+
+	#setter method
+	def gender=(gender_reassignment)
+		@gender = gender_reassignment
+	end
+
+	def age
+		@age
+	end
+
+	def ethnicity
+		@ethnicity
 	end
 end
 	#gender = ['two spirit', 'female', 'gender queer', 'transgender']
@@ -44,3 +71,10 @@ end
 	santas.each do |santa|
 		santa.hello_santa_con
 	end
+
+	santa = Santa.new('male', 'white')
+	santas << santa
+	p santa.age
+	p santa.ethnicity
+	santa.gender = "transgender"
+
