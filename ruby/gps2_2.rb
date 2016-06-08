@@ -99,4 +99,27 @@ new_grocery["Ice_Cream"] = 1
 #print new list nicely
 pretty_print(new_grocery)
 
+# What did you learn about pseudocode from working on this challenge?
+# 	The more detail the better! We knew what we needed to do, but we didn't do a great job of explaining
+# 	how we would do it. I thought about it, in a flash, but then I let that thought go and didn't 
+# 		follow through. I totally understand the importance of really good pseudocoding and hope
+# 		to get better at it as we continue to practice.
+# What are the tradeoffs of using arrays and hashes for this challenge?
+# 	Arrays are great for hold a simple list, but hashes are great when a list item needs a value. Here we
+# 	had a list of foods and quantities, so a hash was the way to go. Also, though, we were able to take a 
+# 	whole string of lists and split it into an array that we fed to a hash, so arrays came in handy as well.
+
+# # What does a method return?
+# 	A method returns its last line
+# # What kind of things can you pass into methods as arguments?
+# 	variables, hashes, arrays, integers
+# # How can you pass information between methods?
+# 	you can wrap a method in another method, you can call a method inside another method, you can use
+# 	the output of one method as the input of another method.
+# # What concepts were solidified in this challenge, and what concepts are still confusing?
+# 	I was struggling with adding to hashes from arrays and I see and understand how we did it here, but I think I still
+# 	need to work on my understanding in this area. My struggle is less about understanding what we did here and
+# 	more about recalling HOW to do it the next time. I didn't even do a great job of this in my solo challenge for last
+# 	week and hope to practice a few more times as we go along.
+
 
