@@ -38,8 +38,13 @@ class Santa
 	def get_mad_at(deer_name)
 		#takes deer_name as an argument and moves that deer's name to last place
 		#in the reindeer rankings.
+		#iterate over reindeer ranking
 		#takes deer_name
 		#moves deer_name along array to last
+		#p @reindeer_ranking.index(deer_name) == @reindeer_ranking.last <==this is false, I want to move it not prove it.
+		deer_in_trouble = @reindeer_ranking.delete(deer_name)
+		@reindeer_ranking << deer_in_trouble
+		p @reindeer_ranking
 	end
 
 	#setter method
@@ -56,8 +61,8 @@ class Santa
 	# end
 
 end
-	#gender = ['two spirit', 'female', 'gender queer', 'transgender']
-	#ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
+	potential_gender = ['two spirit', 'female', 'gender queer', 'transgender']
+	potential_ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
 
 	#gender.length.times do |type|
 	  #santas << Santa.new(gender[type], ethnicity[type])
@@ -85,6 +90,8 @@ end
 	santa.celebrate_birthday
 	santa.celebrate_birthday
 	santa.gender = "transgender"
+	santa.get_mad_at("Rudolph")
+	p 
 
 	puts "The Santa who was male feels much better as #{santa.gender} and is now #{santa.celebrate_birthday} years old."
 
