@@ -6,8 +6,8 @@
 
 
 class Santa
-	attr_reader :gender
-	attr_accessor :ethnicity
+	attr_reader :ethnicity, :age
+	attr_accessor :gender
 	
 	def initialize(gender, ethnicity)
 		#p "Initializing Santa instance..."
@@ -43,17 +43,18 @@ class Santa
 	end
 
 	#setter method
-	def gender=(gender_reassignment)
-		@gender = gender_reassignment
-	end
+	# def gender=(gender_reassignment)
+	# 	@gender = gender_reassignment
+	# end
 
-	def age
-		@age
-	end
+	# def age
+	# 	@age
+	# end
 
-	def ethnicity
-		@ethnicity
-	end
+	# def ethnicity
+	# 	@ethnicity
+	# end
+
 end
 	#gender = ['two spirit', 'female', 'gender queer', 'transgender']
 	#ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
@@ -81,7 +82,9 @@ end
 	santas << santa
 	p santa.age
 	p santa.ethnicity
+	santa.celebrate_birthday
+	santa.celebrate_birthday
 	santa.gender = "transgender"
 
-	puts "The Santa who was male feels much better as #{santa.gender}"
+	puts "The Santa who was male feels much better as #{santa.gender} and is now #{santa.celebrate_birthday} years old."
 
