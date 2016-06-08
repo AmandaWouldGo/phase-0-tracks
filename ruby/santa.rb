@@ -1,6 +1,13 @@
+#define the class Santa
+#define setter methods that make gender changeable
+#define getter methods that make the local data available outside the class.
+#add block that loops through each gender Santa and counts 
+# 	the number of Santas present at Santa Con.
+
+
 class Santa
-	attr_reader :gender
-	attr_accessor :ethnicity
+	attr_reader :ethnicity, :age
+	attr_accessor :gender
 	
 	def initialize(gender, ethnicity)
 		#p "Initializing Santa instance..."
@@ -31,32 +38,36 @@ class Santa
 	def get_mad_at(deer_name)
 		#takes deer_name as an argument and moves that deer's name to last place
 		#in the reindeer rankings.
+		#iterate over reindeer ranking
 		#takes deer_name
 		#moves deer_name along array to last
+		#p @reindeer_ranking.index(deer_name) == @reindeer_ranking.last <==this is false, I want to move it not prove it.
+		deer_in_trouble = @reindeer_ranking.delete(deer_name)
+		@reindeer_ranking << deer_in_trouble
+		p @reindeer_ranking
 	end
 
 	#setter method
-	def gender=(gender_reassignment)
-		@gender = gender_reassignment
-	end
+	# def gender=(gender_reassignment)
+	# 	@gender = gender_reassignment
+	# end
 
-	def age
-		@age
-	end
+	# def age
+	# 	@age
+	# end
 
-	def ethnicity
-		@ethnicity
-	end
+	# def ethnicity
+	# 	@ethnicity
+	# end
+
 end
-	#gender = ['two spirit', 'female', 'gender queer', 'transgender']
-	#ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
+	potential_gender = ['two spirit', 'female', 'gender queer', 'transgender']
+	potential_ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
 
 	#gender.length.times do |type|
 	  #santas << Santa.new(gender[type], ethnicity[type])
 	#end
 
-#add block that loops through each gender Santa and counts 
-#the number of Santas present at Santa Con.
 	#bah_humbug = Santa.new
 	#bah_humbug.speak
 	#bah_humbug.eat_milk_and_cookies("triple chocolate")
@@ -76,5 +87,11 @@ end
 	santas << santa
 	p santa.age
 	p santa.ethnicity
+	santa.celebrate_birthday
+	santa.celebrate_birthday
 	santa.gender = "transgender"
+	santa.get_mad_at("Rudolph")
+	p 
+
+	puts "The Santa who was male feels much better as #{santa.gender} and is now #{santa.celebrate_birthday} years old."
 
