@@ -27,7 +27,7 @@ retaskets = {
 		retasket_sibling: 'Garry',
 		spouse: 'Debbie',
 		total_children: 4,
-		children: ['D', 'Keith', 'Shonta', 'Melissa'],
+		children: ['Deanna', 'Keith', 'Shonta', 'Melissa'],
 		grandchildren: ['Rachael', 'Garry', 'Chanel', 'boy1', 'boy2', 'boy3', 'boy4?'],
 		great_grands: false
 	},
