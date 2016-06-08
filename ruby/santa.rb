@@ -15,16 +15,32 @@ class Santa
 		p "This was a good #{cookie_type}!"
 	end
 
-	santas = []
-	gender = ['two spirit', 'female', 'gender queer', 'transgender']
-	ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
-
-	gender.length.times do |type|
-	  santas << Santa.new(gender[type], ethnicity[type])
+	def hello_santa_con
+		puts "Acknowledging a Santa who is #{@gender} and #{@ethnicity}"
+		puts "Welcome to SantaCon 2016".center(34)
+		puts "____________________________________"
 	end
-	puts "Acknowledging a Santa who is #{@gender}"
-	puts "There are now #{gender.length} Santas at SantaCon."
+end
+	#gender = ['two spirit', 'female', 'gender queer', 'transgender']
+	#ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
+
+	#gender.length.times do |type|
+	  #santas << Santa.new(gender[type], ethnicity[type])
+	#end
+
+#add block that loops through each gender Santa and counts 
+#the number of Santas present at Santa Con.
 	#bah_humbug = Santa.new
 	#bah_humbug.speak
 	#bah_humbug.eat_milk_and_cookies("triple chocolate")
-end
+
+	santas = []
+#change to adding Santas individually for understanding
+	santas << Santa.new('two spirit', 'Shuswap')
+	santas << Santa.new('female', 'Wampanoag')
+	santas << Santa.new('gender queer', 'Navajo')
+	santas << Santa.new('transgender', 'Lummi')
+
+	santas.each do |santa|
+		santa.hello_santa_con
+	end
