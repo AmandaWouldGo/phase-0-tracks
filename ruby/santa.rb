@@ -1,3 +1,10 @@
+#define the class Santa
+#define setter methods that make gender changeable
+#define getter methods that make the local data available outside the class.
+#add block that loops through each gender Santa and counts 
+# 	the number of Santas present at Santa Con.
+
+
 class Santa
 	attr_reader :gender
 	attr_accessor :ethnicity
@@ -55,8 +62,6 @@ end
 	  #santas << Santa.new(gender[type], ethnicity[type])
 	#end
 
-#add block that loops through each gender Santa and counts 
-#the number of Santas present at Santa Con.
 	#bah_humbug = Santa.new
 	#bah_humbug.speak
 	#bah_humbug.eat_milk_and_cookies("triple chocolate")
@@ -77,4 +82,6 @@ end
 	p santa.age
 	p santa.ethnicity
 	santa.gender = "transgender"
+
+	puts "The Santa who was male feels much better as #{santa.gender}"
 
