@@ -47,6 +47,12 @@ class Santa
 		p @reindeer_ranking
 	end
 
+	def print_santas(santas_list)
+		santas.each do 
+			p "There is a Santa who is #{@gender} and #{@ethnicity}"
+		end
+	end
+
 	#setter method
 	# def gender=(gender_reassignment)
 	# 	@gender = gender_reassignment
@@ -64,9 +70,6 @@ end
 	potential_gender = ['two spirit', 'female', 'gender queer', 'transgender']
 	potential_ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
 
-	#gender.length.times do |type|
-	  #santas << Santa.new(gender[type], ethnicity[type])
-	#end
 
 	#bah_humbug = Santa.new
 	#bah_humbug.speak
@@ -95,3 +98,19 @@ end
 
 	puts "The Santa who was male feels much better as #{santa.gender} and is now #{santa.celebrate_birthday} years old."
 
+	puts "Oh my! The Santa Con line has gotten so long!"
+	puts "Here is who has checked in so far:"
+
+	  count = 0
+	  while count < 10
+	  santas.push(Santa.new(potential_gender.sample, potential_ethnicity.sample))
+	  count +=1
+	  end
+
+	  print_santas(santas)
+	  	# santas.each do |gender, ethnicity|
+	  	# p "There is a santa who is #{gender} and #{ethnicity}"
+	  	# end
+
+	
+	#p santas
