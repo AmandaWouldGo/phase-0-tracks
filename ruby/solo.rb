@@ -25,13 +25,19 @@
 
 # Add code to test class function
 
+# Make user interface that takes in the details of a Muppet class instance.
+# Prompt user for information on their muppets
+# Change user info to correct data type using string methods
+# Collect user input into muppets array
+# Print all muppets array with details using .hello_muppet
+
 class Muppet
   attr_accessor :color, :hair, :name, :clothing
 
-  def initialize (color, hair, name, clothing)
+  def initialize (name, color, hair, clothing)
+    @name = name
     @color = color
     @hair = hair
-    @name = name
     @clothing = clothing
   end
 
@@ -60,12 +66,36 @@ end
 
 muppets = []
 
-muppets << Muppet.new("chartreuse", "fluffy", "Fingerling", "a dress")
+#unless new_name == "done"
+  puts "Welcome to the muppet workshop! Add all kinds of muppets!"
+  new_name = ""
+while new_name != "done"
+  puts "Enter your new muppets name, if you are done entering muppets type 'done'"
+  new_name = gets.chomp
+  puts "What color is #{new_name}?"
+  new_color = gets.chomp
+  puts "What is the texture of #{new_name}'s hair?"
+  new_hair = gets.chomp
+  puts "What is #{new_name} wearing?"
+  new_clothes = gets.chomp
+  muppets << Muppet.new(new_name, new_color, new_hair, new_clothes)
+  if new_name == "done"
+  #   add_muppet = false
+  # end
+  # if !add_muppet
+    puts "Thank you for entering muppets!"
+  end
+end
 
-muppets[0].hello_muppet
-muppets[0].tell_joke
-muppets[0].make_friends
-muppets[0].sing("friendship")
+muppets.each do |muppet|
+  muppet.hello_muppet
+end
+#muppets << Muppet.new("Fingerling", "chartreuse", "fluffy", "a dress")
+
+# muppets[0].hello_muppet
+# muppets[0].tell_joke
+# muppets[0].make_friends
+# muppets[0].sing("friendship")
 
 
 
