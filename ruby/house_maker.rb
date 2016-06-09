@@ -66,19 +66,7 @@ end
 
 # Let the user add items to rooms
 # IN an infinite loop:
-loop do
-	# Ask the user for the number of the room they want to add items to
-	puts "Enter the number of the room to add an item to (or type 'done')"
-	inputted_idx = gets.chomp
-	# If the user is done, break
-	break if inputted_idx == "done"
-	# Otherwise, add the items to the room
-	room_idx = inputted_idx.to_i
-	puts "Enter the items to add:"
-	add_item_to_room!(house, house.keys[room_idx], item_to_add)
-	#print new house
-	print_house(house)
-end
+s
 
 #TEST CODE
 
