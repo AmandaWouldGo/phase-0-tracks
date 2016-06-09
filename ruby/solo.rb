@@ -48,13 +48,24 @@ class Muppet
       puts "The hecklers laughed at #{@name} not with #{@name}, as usual"
     end
   end
+
+  def sing(song_topic)
+    puts "#{@name} sings a song about #{song_topic}"
+  end
+
+  def hello_muppet
+    puts "#{@name} is a muppet who is #{@color} with #{@hair} hair and is wearing #{@clothing}"
+  end
 end
 
 muppets = []
 
-muppets << Muppet.new("chartreuse", "fluffy", "Fingerling", "dress")
+muppets << Muppet.new("chartreuse", "fluffy", "Fingerling", "a dress")
 
+muppets[0].hello_muppet
 muppets[0].tell_joke
 muppets[0].make_friends
+muppets[0].sing("friendship")
+
 
 
