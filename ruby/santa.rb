@@ -48,12 +48,6 @@ class Santa
 		p @reindeer_ranking
 	end
 
-	def print_santas(santas_list)
-		santas.each do 
-			p "There is a Santa who is #{@gender} and #{@ethnicity}"
-		end
-	end
-
 	#setter method
 	# def gender=(gender_reassignment)
 	# 	@gender = gender_reassignment
