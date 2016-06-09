@@ -1,10 +1,9 @@
 #CLASS ------------------------
-#Muppets
+#Muppet
 
 #CHARACTERISTICS ----------------
 #Color: varies
 #Hair: varies
-#Eye_size: varies
 #Name: varies
 #Clothing: varies
 
@@ -12,3 +11,25 @@
 #Make friends
 #Tell jokes
 #Sing
+
+# Create and initialize class
+# Method to make friends
+# output: puts "#{name} made a friend!"
+
+# Method to tell jokes
+# output: puts "#{name} told a joke!!"
+
+# Method to make friends
+# input: song_topic
+# output: puts "#{name} sang a song about #{song_topic}"
+
+class Muppet
+  attr_accessor :color, :hair, :name, :clothing
+
+  def initialize (color, hair, name, clothing)
+    @color = color
+    @hair = hair
+    @name = name
+    @clothing = clothing
+  end
+end
