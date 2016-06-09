@@ -66,27 +66,23 @@ end
 
 muppets = []
 
-#unless new_name == "done"
   puts "Welcome to the muppet workshop! Add all kinds of muppets!"
   new_name = ""
 while new_name != "done"
   puts "Enter your new muppets name, if you are done entering muppets type 'done'"
   new_name = gets.chomp
+  break if new_name == "done"
   puts "What color is #{new_name}?"
   new_color = gets.chomp
   puts "What is the texture of #{new_name}'s hair?"
   new_hair = gets.chomp
   puts "What is #{new_name} wearing?"
   new_clothes = gets.chomp
+
   muppets << Muppet.new(new_name, new_color, new_hair, new_clothes)
-  if new_name == "done"
-  #   add_muppet = false
-  # end
-  # if !add_muppet
-    puts "Thank you for entering muppets!"
-  end
 end
 
+puts "Here is a list of the muppets in the workshop:"
 muppets.each do |muppet|
   muppet.hello_muppet
 end
