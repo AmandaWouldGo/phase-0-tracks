@@ -23,6 +23,8 @@
 # input: song_topic
 # output: puts "#{name} sang a song about #{song_topic}"
 
+# Add code to test class function
+
 class Muppet
   attr_accessor :color, :hair, :name, :clothing
 
@@ -36,4 +38,23 @@ class Muppet
   def make_friends
     puts "#{@name} made a friend"
   end
+
+  def tell_joke
+    puts "#{@name} told a joke!"
+    funny_or_not = [true, false].sample
+    if funny_or_not == true
+      puts "The hecklers actually laughed!"
+    else
+      puts "The hecklers laughed at #{@name} not with #{@name}, as usual"
+    end
+  end
 end
+
+muppets = []
+
+muppets << Muppet.new("chartreuse", "fluffy", "Fingerling", "dress")
+
+muppets[0].tell_joke
+muppets[0].make_friends
+
+
