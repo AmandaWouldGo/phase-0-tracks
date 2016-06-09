@@ -13,15 +13,15 @@
 
 
 class Santa
-	attr_reader :ethnicity, :age
-	attr_accessor :gender
+	attr_reader :ethnicity
+	attr_accessor :gender, :age
 	
-	def initialize(gender, ethnicity)
+	def initialize(gender, ethnicity, age)
 		#p "Initializing Santa instance..."
 		@gender = gender
 		@ethnicity = ethnicity
 		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-		@age = 0
+		@age = age
 	end
 
 	def speak
@@ -33,7 +33,7 @@ class Santa
 	end
 
 	def hello_santa_con
-		puts "Acknowledging a Santa who is #{@gender} and #{@ethnicity}"
+		puts "Acknowledging a Santa who is #{@gender} and #{@ethnicity} and #{@age}"
 		puts "Welcome to SantaCon 2016".center(34)
 		puts "____________________________________"
 	end
@@ -72,36 +72,30 @@ potential_gender = ['two spirit', 'female', 'gender queer', 'transgender']
 potential_ethnicity = ['Shuswap', 'Wampanoag', 'Navajo', 'Lummi']
 
 santas = []
-santas << Santa.new('two spirit', 'Shuswap')
-santas << Santa.new('female', 'Wampanoag')
-santas << Santa.new('gender queer', 'Navajo')
-santas << Santa.new('transgender', 'Lummi')
-
-santas.each do |santa|
-	santa.hello_santa_con
-end
-
-santa = Santa.new('male', 'white')
-santas << santa
-p santa.age
-p santa.ethnicity
-santa.celebrate_birthday
-santa.celebrate_birthday
-santa.gender = "transgender"
-santa.get_mad_at("Rudolph")
-	
-
-puts "The Santa who was male feels much better as #{santa.gender} and is now #{santa.celebrate_birthday} years old."
+santas << Santa.new('two spirit', 'Shuswap', 99)
+santas << Santa.new('female', 'Wampanoag', 22)
+santas << Santa.new('gender queer', 'Navajo', 12)
+santas << Santa.new('transgender', 'Lummi', 38)
 
 puts "Oh my! The Santa Con line has gotten so long!"
 puts "Here is who has checked in so far:"
 
 count = 0
 while count < 500
-	 santas.push(Santa.new(potential_gender.sample, potential_ethnicity.sample))
-	 count +=1
+	 santas.push(Santa.new(potential_gender.sample, potential_ethnicity.sample, rand(140)))
+	 count += 1
 end
 
 santas.each do |number|
 	 number.hello_santa_con
 end
+
+# santa = Santa.new('male', 'white', 50)
+# santas << santa
+# p santa.age
+# p santa.ethnicity
+# santa.celebrate_birthday
+# santa.celebrate_birthday
+# santa.gender = "transgender"
+# santa.get_mad_at("Rudolph")
+# santa.hello_santa_con
