@@ -19,7 +19,7 @@
 # Method to tell jokes
 # output: puts "#{name} told a joke!!"
 
-# Method to make friends
+# Method to sing songs
 # input: song_topic
 # output: puts "#{name} sang a song about #{song_topic}"
 
@@ -31,5 +31,9 @@ class Muppet
     @hair = hair
     @name = name
     @clothing = clothing
+  end
+
+  def make_friends
+    puts "#{@name} made a friend"
   end
 end
