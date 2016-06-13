@@ -4,10 +4,9 @@
 // what happens: 
 // - enter a word as an argument in the function.
 // ---function must have take a parameter
-// - function loops over string and reads each character individually.
-// ---This uses a for loop
-// - function returns each character in reverse order
-// - function adds each character to put back together as string
+// - function splits string into an array.
+// - function returns each character in reverse order within array
+// - function joins each character in array to put back together as string
 // output: string reversed
 
 // function reverseString(str) {
@@ -16,24 +15,16 @@
 
 var muppet = "muppet";
 
-// reverseString(muppet);
-
-// function reverseString(str) {
-// 	for (c = 0; c < str.length; c++) {
-// 		console.log(str[c]);
-// 	}
-// }
-
 function reverseString(str) {
-	for (c = str.length - 1; c >= 0; c--) {
-		console.log(str[c]);
-	}
+	var strSplit = str.split("");
+
+	var strSplit = strSplit.reverse();
+
+	return strSplit.join("");
 }
 
-function reverseString(str) {
-	for (c = str.length - 1; c >= 0; c--) {
-		console.log(str[c]);
-	}
-}
+var reverseMuppet = reverseString(muppet);
 
-reverseString(muppet);
+if ("muppet" == "muppet") {
+console.log(reverseMuppet);
+}
