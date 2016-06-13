@@ -17,9 +17,7 @@ var muppet = "muppet";
 
 function reverseString(str) {
 	var strSplit = str.split("");
-
 	var strSplit = strSplit.reverse();
-
 	return strSplit.join("");
 }
 
