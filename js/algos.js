@@ -3,10 +3,10 @@
 //move longest string at front of array at index 0
 //print index 0 to return the longest string
 
-testArray = ["tiny", "small", "longer"];
-testArray2 = ["Molly", "Marty", "Amanda"];
-testArray3 = ["Orange is the New Black", "Love", "Unbreakable Kimmie Schmidt", "Master of None"]
-longest = "";
+var testArray = ["tiny", "small", "longer"];
+var testArray2 = ["Molly", "Marty", "Amanda"];
+var testArray3 = ["Orange is the New Black", "Love", "Unbreakable Kimmie Schmidt", "Master of None"];
+var longest = "";
 
 function longestString(array) {
 	
@@ -24,10 +24,29 @@ function longestString(array) {
 // longestString(testArray3);
 
 // shared_value function
+// iterate over two objects to find if they have any matching values 
+// 
 
-function shared_value(object1, object2) {
-	
+// var object1 = {name: "Molly", age: 35};
+// var object2 = {name: "Molly", age: 35};
+// var object3 = {name: "Amanda", age: 34};
+
+var object1 = "orange";
+var object2 = "orange";
+var object3 = "apple";
+
+function shared_value(obj1, obj2) {
+	//for (i = 0; ; i++) {
+		if (obj1 == obj2) {
+			console.log("That's true");
+		} else {
+			console.log("That's false");
+		}
+	//}
 }
+
+console.log(shared_value(object1, object2));
+console.log(shared_value(object1, object3));
 
 
 
