@@ -20,13 +20,13 @@
 	// Use Math.random to generate random words from variable holding possible letters
 	// Generate (n) words
 	// Push (n) words to array
-// Output: array of words 
+// Output: array of words
 
 ///// RELEASE 0 /////
 
-var testArray = ["tiny", "small", "longer"];
-var testArray2 = ["Molly", "Marty", "Amanda"];
-var testArray3 = ["Orange is the New Black", "Love", "Unbreakable Kimmie Schmidt", "Master of None"];
+// var testArray = ["tiny", "small", "longer"];
+// var testArray2 = ["Molly", "Marty", "Amanda"];
+// var testArray3 = ["Orange is the New Black", "Love", "Unbreakable Kimmie Schmidt", "Master of None"];
 var longest = "";
 
 function longestString(array) {
@@ -79,9 +79,15 @@ var randomString = function(length) {
     for(i = 0; i < length; i++) {
         randomWord += possibleLetters.charAt(Math.floor(Math.random() * possibleLetters.length));
     }
-    randomWords.push(randomWord)
+    randomWords.push(randomWord);
 }
 
-randomString(Math.random() * 10);
+var fillArray = function(times) {
+	for(n = 0; n < times; n++) {
+		randomString(Math.random() * 10);
+	}
+	console.log(randomWords);
+}
 
-console.log(randomWords)
+fillArray(10);
+longestString(randomWords);
