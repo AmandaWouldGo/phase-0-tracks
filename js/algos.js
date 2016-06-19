@@ -17,9 +17,9 @@
 // randomWordGenerator function
 // Input: Integer (n)
 // What happens: 
-	// 
+	// Use Math.random to generate random words from variable holding possible letters
 	// Generate (n) words
-	//
+	// Push (n) words to array
 // Output: array of words 
 
 ///// RELEASE 0 /////
@@ -40,6 +40,7 @@ function longestString(array) {
 	console.log(longest);
 }
 
+// Driver Code Release 0
 // longestString(testArray);
 // longestString(testArray2);
 // longestString(testArray3);
@@ -51,6 +52,7 @@ var object2 = {name: "Amanda", age: 34, glasses: "yes"};
 var object3 = {name: "Marty", age: 6, glasses: "no"};
 
 var true_test = true
+
 function shared_value(obj1, obj2) {
 	 for(var property in obj1) {
 		if (obj1[property] == obj2[property]) {
@@ -63,10 +65,26 @@ function shared_value(obj1, obj2) {
 	}
 }
 
+// Driver Code Release 1
 // shared_value(object1, object2);
 // shared_value(object1, object3);
 
 ///// RELEASE 2 /////
 
+var randomWords = [];
 
+function randomWordGenerator(number) {
+	var times = number;
+    var randomWord = "";
+    var possibleLetters = "lam";
+    for(times; i < times; i++) {
+	    for( var i = 0; i < 2; i += Math.random(10))
+	        randomWord += possibleLetters.charAt(Math.floor(Math.random() * possibleLetters.length));
+	    randomWords.push(randomWord);
+	    console.log(randomWords);
+		}
+	}
+}
+
+randomWordGenerator(3);
 
