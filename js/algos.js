@@ -30,23 +30,35 @@ function longestString(array) {
 // var object1 = {name: "Molly", age: 35};
 // var object2 = {name: "Molly", age: 35};
 // var object3 = {name: "Amanda", age: 34};
-
-var object1 = "orange";
-var object2 = "orange";
-var object3 = "apple";
-
-function shared_value(obj1, obj2) {
-	//for (i = 0; ; i++) {
-		if (obj1 == obj2) {
-			console.log("That's true");
-		} else {
-			console.log("That's false");
-		}
-	//}
+function Car(make, model) {
+  this.make = make;
+  this.model = model;
 }
 
-console.log(shared_value(object1, object2));
-console.log(shared_value(object1, object3));
+var object1 = new Car("Kia", "Soul");
+var object2 = new Car("Kia", "Soul");
+var object3 = new Car("Subaru", "Outback");
+
+// console.log(object1);
+// console.log(object2);
+// console.log(object3);
+
+
+var true_test = true
+function shared_value(obj1, obj2) {
+
+	if (obj1 == obj2) {
+		true_test = true;
+		console.log("That's true");
+	} else {
+		true_test = false;
+		console.log("That's false");
+	}
+
+}
+
+shared_value(object1, object2);
+shared_value(object1, object3);
 
 
 
