@@ -20,13 +20,13 @@
 	// Use Math.random to generate random words from variable holding possible letters
 	// Generate (n) words
 	// Push (n) words to array
-// Output: array of words 
+// Output: array of words
 
 ///// RELEASE 0 /////
 
-var testArray = ["tiny", "small", "longer"];
-var testArray2 = ["Molly", "Marty", "Amanda"];
-var testArray3 = ["Orange is the New Black", "Love", "Unbreakable Kimmie Schmidt", "Master of None"];
+// var testArray = ["tiny", "small", "longer"];
+// var testArray2 = ["Molly", "Marty", "Amanda"];
+// var testArray3 = ["Orange is the New Black", "Love", "Unbreakable Kimmie Schmidt", "Master of None"];
 var longest = "";
 
 function longestString(array) {
@@ -73,18 +73,21 @@ function shared_value(obj1, obj2) {
 
 var randomWords = [];
 
-function randomWordGenerator(number) {
-	var times = number;
+var randomString = function(length) {
     var randomWord = "";
-    var possibleLetters = "lam";
-    for(times; i < times; i++) {
-	    for( var i = 0; i < 2; i += Math.random(10))
-	        randomWord += possibleLetters.charAt(Math.floor(Math.random() * possibleLetters.length));
-	    randomWords.push(randomWord);
-	    console.log(randomWords);
-		}
-	}
+    var possibleLetters = "lamph";
+    for(i = 0; i < length; i++) {
+        randomWord += possibleLetters.charAt(Math.floor(Math.random() * possibleLetters.length));
+    }
+    randomWords.push(randomWord);
 }
 
-randomWordGenerator(3);
+var fillArray = function(times) {
+	for(n = 0; n < times; n++) {
+		randomString(Math.random() * 10);
+	}
+	console.log(randomWords);
+}
 
+fillArray(10);
+longestString(randomWords);
