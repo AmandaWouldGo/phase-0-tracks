@@ -1,7 +1,28 @@
-//write a function that takes an array of strings
-//iterate over array to find the longest string
-//move longest string at front of array at index 0
-//print index 0 to return the longest string
+// Release 0
+// write a function that takes an array of strings
+// iterate over array to find the longest string
+// Make empty variable
+// Compare each string to empty variable
+// If string is longer than variable, update variable
+// Print updated variable
+
+// Release 1 
+// shared_value function
+// use a for loop to iterate over two objects to find if they have any matching values 
+// Print "That's true" if true
+// Print "That's false" if false
+// Ideally it would just print true or false once, but I haven't figured that out yet.
+
+// Release 2
+// randomWordGenerator function
+// Input: Integer (n)
+// What happens: 
+	// 
+	// Generate (n) words
+	//
+// Output: array of words 
+
+///// RELEASE 0 /////
 
 var testArray = ["tiny", "small", "longer"];
 var testArray2 = ["Molly", "Marty", "Amanda"];
@@ -23,42 +44,29 @@ function longestString(array) {
 // longestString(testArray2);
 // longestString(testArray3);
 
-// shared_value function
-// iterate over two objects to find if they have any matching values 
-// 
+///// RELEASE 1 /////
 
-// var object1 = {name: "Molly", age: 35};
-// var object2 = {name: "Molly", age: 35};
-// var object3 = {name: "Amanda", age: 34};
-function Car(make, model) {
-  this.make = make;
-  this.model = model;
-}
-
-var object1 = new Car("Kia", "Soul");
-var object2 = new Car("Kia", "Soul");
-var object3 = new Car("Subaru", "Outback");
-
-// console.log(object1);
-// console.log(object2);
-// console.log(object3);
-
+var object1 = {name: "Molly", age: 35, glasses: "yes"};
+var object2 = {name: "Amanda", age: 34, glasses: "yes"};
+var object3 = {name: "Marty", age: 6, glasses: "no"};
 
 var true_test = true
 function shared_value(obj1, obj2) {
-
-	if (obj1 == obj2) {
-		true_test = true;
-		console.log("That's true");
-	} else {
-		true_test = false;
-		console.log("That's false");
+	 for(var property in obj1) {
+		if (obj1[property] == obj2[property]) {
+			true_test = true;
+			console.log("That's true");
+		} else {
+			true_test = false;
+			console.log("That's false");
+		}
 	}
-
 }
 
-shared_value(object1, object2);
-shared_value(object1, object3);
+// shared_value(object1, object2);
+// shared_value(object1, object3);
+
+///// RELEASE 2 /////
 
 
 
