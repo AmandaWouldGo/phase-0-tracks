@@ -25,7 +25,7 @@ function Car(make, model, year)
   this.make = make;
   this.model = model;
   this.year = year;
-  keylessIgnition = true
+  keylessIgnition = true;
 
   this.reminder = function() {
     if (this.keylessIgnition) {
