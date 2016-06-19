@@ -73,18 +73,15 @@ function shared_value(obj1, obj2) {
 
 var randomWords = [];
 
-function randomWordGenerator(number) {
-	var times = number;
+var randomString = function(length) {
     var randomWord = "";
-    var possibleLetters = "lam";
-    for(times; i < times; i++) {
-	    for( var i = 0; i < 2; i += Math.random(10))
-	        randomWord += possibleLetters.charAt(Math.floor(Math.random() * possibleLetters.length));
-	    randomWords.push(randomWord);
-	    console.log(randomWords);
-		}
-	}
+    var possibleLetters = "lamph";
+    for(i = 0; i < length; i++) {
+        randomWord += possibleLetters.charAt(Math.floor(Math.random() * possibleLetters.length));
+    }
+    randomWords.push(randomWord)
 }
 
-randomWordGenerator(3);
+randomString(Math.random() * 10);
 
+console.log(randomWords)
