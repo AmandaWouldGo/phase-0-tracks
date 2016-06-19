@@ -91,3 +91,21 @@ var fillArray = function(times) {
 
 fillArray(10);
 longestString(randomWords);
+fillArray(4);
+longestString(randomWords);
+fillArray(7);
+longestString(randomWords);
+fillArray(9);
+longestString(randomWords);
+fillArray(4);
+longestString(randomWords);
+fillArray(3);
+longestString(randomWords);
+fillArray(6);
+longestString(randomWords);
+fillArray(8);
+longestString(randomWords);
+fillArray(3);
+longestString(randomWords);
+fillArray(5);
+longestString(randomWords);
