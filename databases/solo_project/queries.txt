@@ -1,0 +1,17 @@
+sqlite> SELECT * FROM directors;
+1|Reggie|Shaw
+2|Hashim|Jibri
+3|Amanda|Cook
+4|Mirabai|Hutton
+
+sqlite> SELECT * FROM resident_assistants
+   ...> ;
+1|Hannah|Ohlone 5|true|25|3
+2|Ashley|Ohlone 3|false|45|3
+3|Jenn|Geneva 1|true|30|2
+4|Amanda|Geneva 4|false|45|2
+5|Jessica|ILC 1|true|55|4
+6|RYAN|ILC 3|true|65|4
+7|JR|Apartments 2|false|55|1
+8|Max|Apartments 4|false|60|1
+
