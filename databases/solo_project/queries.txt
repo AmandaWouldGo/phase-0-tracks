@@ -15,3 +15,107 @@ sqlite> SELECT * FROM resident_assistants
 7|JR|Apartments 2|false|55|1
 8|Max|Apartments 4|false|60|1
 
+sqlite> SELECT * FROM resident_assistants 
+   ...> WHERE residents=45;
+2|Ashley|Ohlone 3|false|45|3
+4|Amanda|Geneva 4|false|45|2
+
+sqlite> UPDATE resident_assistants SET name="Prithi" WHERE name="Hannah";
+
+sqlite> SELECT * FROM resident_assistants;
+1|Prithi|Ohlone 5|true|25|3
+2|Ashley|Ohlone 3|false|45|3
+3|Jenn|Geneva 1|true|30|2
+4|Amanda|Geneva 4|false|45|2
+5|Jessica|ILC 1|true|55|4
+6|RYAN|ILC 3|true|65|4
+7|JR|Apartments 2|false|55|1
+8|Max|Apartments 4|false|60|1
+
+sqlite> SELECT * FROM directors
+   ...> JOIN resident_assistants
+   ...> ON directors.id = resident_assistants.directors_id;
+3|Amanda|Cook|1|Prithi|Ohlone 5|true|25|3
+3|Amanda|Cook|2|Ashley|Ohlone 3|false|45|3
+2|Hashim|Jibri|3|Jenn|Geneva 1|true|30|2
+2|Hashim|Jibri|4|Amanda|Geneva 4|false|45|2
+4|Mirabai|Hutton|5|Jessica|ILC 1|true|55|4
+4|Mirabai|Hutton|6|RYAN|ILC 3|true|65|4
+1|Reggie|Shaw|7|JR|Apartments 2|false|55|1
+1|Reggie|Shaw|8|Max|Apartments 4|false|60|1
+
+sqlite> SELECT resident_assistants.name, resident_assistants.floor, directors.first_name
+   ...> FROM resident_assistants
+   ...> JOIN directors
+   ...> ON directors.id = resident_assistants.directors_id
+   ...> WHERE directors.first_name="Amanda" OR directors.first_name="Hashim";
+Prithi|Ohlone 5|Amanda
+Ashley|Ohlone 3|Amanda
+Jenn|Geneva 1|Hashim
+Amanda|Geneva 4|Hashim
+
+sqlite> DELETE FROM resident_assistants
+   ...> WHERE residents=65;
+sqlite> SELECT * FROM resident_assistants;
+1|Prithi|Ohlone 5|true|25|3
+2|Ashley|Ohlone 3|false|45|3
+3|Jenn|Geneva 1|true|30|2
+4|Amanda|Geneva 4|false|45|2
+5|Jessica|ILC 1|true|55|4
+7|JR|Apartments 2|false|55|1
+8|Max|Apartments 4|false|60|1
+
+sqlite> SELECT directors.first_name, COUNT(resident_assistants.name)
+   ...> FROM directors
+   ...> JOIN resident_assistants
+   ...> ON directors.id = resident_assistants.directors_id
+   ...> GROUP BY directors.first_name;
+Amanda|2
+Hashim|2
+Mirabai|1
+Reggie|2
+
+sqlite> SELECT directors.first_name, resident_assistants.name, resident_assistants.floor
+   ...> FROM directors
+   ...> JOIN resident_assistants
+   ...> ON directors.id = resident_assistants.directors_id
+   ...> WHERE resident_assistants.theme_floor="true";
+Amanda|Prithi|Ohlone 5
+Hashim|Jenn|Geneva 1
+Mirabai|Jessica|ILC 1
+
+sqlite> SELECT directors.last_name, resident_assistants.floor
+   ...> FROM directors
+   ...> LEFT OUTER JOIN resident_assistants
+   ...> ON directors.id = resident_assistants.directors_id
+   ...> ORDER BY resident_assistants.floor ASC;
+Shaw|Apartments 2
+Shaw|Apartments 4
+Jibri|Geneva 1
+Jibri|Geneva 4
+Hutton|ILC 1
+Cook|Ohlone 3
+Cook|Ohlone 5
+
+sqlite> SELECT directors.last_name, resident_assistants.floor
+   ...> FROM directors
+   ...> RIGHT OUTER JOIN resident_assistants
+   ...> ON directors.id = resident_assistants.directors_id
+   ...> ORDER BY resident_assistants.floor ASC;
+Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+sqlite> SELECT directors.last_name, resident_assistants.floor
+   ...> FROM directors
+   ...> INNER JOIN resident_assistants
+   ...> ON directors.id = resident_assistants.directors_id
+   ...> WHERE directors.id=4;
+Hutton|ILC 1
+
+
+
+
+
+
+
+
+
