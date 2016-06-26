@@ -144,6 +144,10 @@ case amanda_wants
       dates = 'dates'
       update_existing(db, owner_choice, dates, new_dates)
     end
+  when 'delete'
+    puts 'What home owner would you like to delete?'
+    owner_choice = gets.chomp
+    db.execute("DELETE FROM homes WHERE owner = ?", [owner_choice])
 end
 
 puts "Here is a table of your DBC housing:"
