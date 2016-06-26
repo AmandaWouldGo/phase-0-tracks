@@ -53,7 +53,9 @@ create_table_1 = <<-SQL
   owner VARCHAR(255),
   address VARCHAR(255),
   city  VARCHAR(255),
-  dates VARCHAR(255)
+  dates VARCHAR(255),
+  stay_type_id INT,
+  FOREIGN KEY (stay_type_id) REFERENCES stay_type(id)
   )
 SQL
 
@@ -61,8 +63,7 @@ create_table_2 = <<-SQL
   CREATE TABLE IF NOT EXISTS stay_type(
   id INTEGER PRIMARY KEY,
   type VARCHAR(255),
-  home_id VARCHAR(255),
-  FOREIGN KEY (home_id) REFERENCES homes(id)
+  home_id VARCHAR(255)
   )
 SQL
 
@@ -72,8 +73,8 @@ create_table_3 = <<-SQL
   pet_name VARCHAR(255),
   type VARCHAR(255),
   needs VARCHAR(255),
-  home_id INT,
-  FOREIGN KEY (home_id) REFERENCES homes(id)
+  stay_type_id INT,
+  FOREIGN KEY (stay_type_id) REFERENCES stay_type(id)
   )
  SQL
 
@@ -81,8 +82,8 @@ db.execute(create_table_1)
 db.execute(create_table_2)
 db.execute(create_table_3)
 
-def add_new (db, owner_new, address_new, city_new, dates_new)
-  db.execute("INSERT INTO homes (owner, address, city, dates) VALUES (?, ?, ?, ?)", [owner_new, address_new, city_new, dates_new])
+def add_new (db, owner_new, address_new, city_new, dates_new, stay_type)
+  db.execute("INSERT INTO homes (owner, address, city, dates, stay_type_id) VALUES (?, ?, ?, ?, ?)", [owner_new, address_new, city_new, dates_new, stay_type])
 end
 
 def update_existing (db, name_to_update, value_to_update, updated_value)
@@ -102,7 +103,7 @@ amanda_wants = gets.chomp.downcase
 case amanda_wants
   when 'add'
     puts "Add the name of the home owner:"
-    owner_new = gets.chomp.upcase
+    owner_new = gets.chomp
     puts "Add the street address:"
     address_new = gets.chomp.upcase
     puts "Add the city:"
@@ -116,7 +117,7 @@ case amanda_wants
     else
       stay_id = 2
     end
-    add_new(db, owner_new, address_new, city_new, dates_new)
+    add_new(db, owner_new, address_new, city_new, dates_new, stay_id)
   when 'update'
     puts 'What home owner would you like to update?'
     owner_choice = gets.chomp
