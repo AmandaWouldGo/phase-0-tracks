@@ -90,14 +90,18 @@ def update_existing (db, name_to_update, value_to_update, updated_value)
 end
 
 def display_homes (db)
-  puts db.execute(<<-SQL
+  display_hash = db.execute(<<-SQL
     SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
     FROM homes
     JOIN stay_type
     ON stay_type.id = homes.stay_type_id
-  SQL
-)
+    SQL
+  )
 
+  display_hash.each do |value|
+    puts "---------"
+    puts value
+  end
 end
 
 db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
@@ -106,65 +110,69 @@ db.execute("INSERT INTO stay_type (type) VALUES ('housesit')")
 db.execute("SELECT * FROM stay_type")
 
 puts "Welcome, Amanda, to your DBC Housing Organizer"
-puts "What do you want to do today? Type one: 'add', 'update', 'display', or 'delete'."
+puts "What do you want to do today? Type one: 'add', 'update', 'display', 'delete' or 'done'."
 
-amanda_wants = gets.chomp.downcase
+amanda_wants = ""
+while amanda_wants != 'done'
+  amanda_wants = gets.chomp.downcase
+  break if amanda_wants == 'done'
+  case amanda_wants
+    when 'add'
+      puts "Add the name of the home owner:"
+      owner_new = gets.chomp
+      puts "Add the street address:"
+      address_new = gets.chomp.upcase
+      puts "Add the city:"
+      city_new = gets.chomp.upcase
+      puts "Add the range of dates you'll be staying (ex: 10/1-10/25):"
+      dates_new = gets.chomp
+      puts "Will this be a homestay or a housesit?"
+      stay_id = gets.chomp
+      if stay_id == 'homestay'
+        stay_id = 1
+      else
+        stay_id = 2
+      end
+      add_new(db, owner_new, address_new, city_new, dates_new, stay_id)
+    when 'update'
+      puts 'What home owner would you like to update?'
+      owner_choice = gets.chomp
+      puts 'Choose one of the following to update: name, address, city, dates'
+      update_request = gets.chomp
+      if update_request == 'name'
+        puts "What is the new name?"
+        new_name = gets.chomp
+        owner = 'owner'
+        update_existing(db, owner_choice, owner, new_name)
+      elsif update_request == 'address'
+        puts "What is the new address?"
+        new_address = gets.chomp.upcase
+        address = 'address'
+        update_existing(db, owner_choice, address, new_address)
+      elsif update_request == 'city'
+        puts "What is the new city?"
+        new_city = gets.chomp.upcase
+        city = 'city'
+        update_existing(db, owner_choice, city, new_city)
+      else
+        puts "What are the new dates of your stay with #{owner_choice}? (ex: 10/1-10/25)"
+        new_dates = gets.chomp
+        dates = 'dates'
+        update_existing(db, owner_choice, dates, new_dates)
+      end
+    when 'display'
+      display_homes(db)
+    when 'delete'
+      puts 'What home owner would you like to delete?'
+      owner_choice = gets.chomp
+      db.execute("DELETE FROM homes WHERE owner = ?", [owner_choice])
+  end
 
-case amanda_wants
-  when 'add'
-    puts "Add the name of the home owner:"
-    owner_new = gets.chomp
-    puts "Add the street address:"
-    address_new = gets.chomp.upcase
-    puts "Add the city:"
-    city_new = gets.chomp.upcase
-    puts "Add the range of dates you'll be staying (ex: 10/1-10/25):"
-    dates_new = gets.chomp
-    puts "Will this be a homestay or a housesit?"
-    stay_id = gets.chomp
-    if stay_id == 'homestay'
-      stay_id = 1
-    else
-      stay_id = 2
-    end
-    add_new(db, owner_new, address_new, city_new, dates_new, stay_id)
-  when 'update'
-    puts 'What home owner would you like to update?'
-    owner_choice = gets.chomp
-    puts 'Choose one of the following to update: name, address, city, dates'
-    update_request = gets.chomp
-    if update_request == 'name'
-      puts "What is the new name?"
-      new_name = gets.chomp
-      owner = 'owner'
-      update_existing(db, owner_choice, owner, new_name)
-    elsif update_request == 'address'
-      puts "What is the new address?"
-      new_address = gets.chomp
-      address = 'address'
-      update_existing(db, owner_choice, address, new_address)
-    elsif update_request == 'city'
-      puts "What is the new city?"
-      new_city = gets.chomp
-      city = 'city'
-      update_existing(db, owner_choice, city, new_city)
-    else
-      puts "What are the new dates of your stay with #{owner_choice}? (ex: 10/1-10/25)"
-      new_dates = gets.chomp
-      dates = 'dates'
-      update_existing(db, owner_choice, dates, new_dates)
-    end
-  when 'delete'
-    puts 'What home owner would you like to delete?'
-    owner_choice = gets.chomp
-    db.execute("DELETE FROM homes WHERE owner = ?", [owner_choice])
+  puts "Would you like to do anything else? Type one: 'add', 'update', 'display', 'delete' or 'done'."
 end
 
 puts "Here is a table of your DBC housing:"
 puts ""
 puts "----------------------"
-
 display_homes(db)
-# puts db.execute("SELECT * FROM homes")
-
 puts "----------------------"
