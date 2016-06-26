@@ -11,16 +11,10 @@
     #address
     #city
     #dates
-    #stay_type_id would be a FOREIGN_KEY
   #possible 3rd table (pets) holds info for housesit including
     #pet_name
     #type
     #notes
-    #owner_id would be a FOREIGN KEY
-
-### NEED TO RESEARCH THREE TABLES AND PRIMARY/FOREIGN KEYS
-### QUESTION: DO I NEED TO HAVE ONLY ONE TABLE BE PRIMARY? OR CAN TABLE 1 BE PRIMARY TO TABLE TWO
-### AND TABLE TWO BE PRIMARY FOR TABLE 3?
 
 ### USER INTERFACE ###
 # add user interface (I'm the only user for now!)
@@ -37,11 +31,10 @@
 ### METHODS ###
 # need methods that add info into table/s
   # __.execute(<sqlite3 code here>)
-# add method?
+# add method
 # update method
-# display method? maybe not necessary? maybe able to do this directly in case/if statement
+# display method
 # delete method
-# method that shows readable table at end of program and then exits the program
 
 require 'sqlite3' 
 
@@ -90,15 +83,16 @@ def update_existing (db, name_to_update, value_to_update, updated_value)
 end
 
 def display_homes (db)
-  display_hash = db.execute(<<-SQL
+  display = db.execute(<<-SQL
     SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
     FROM homes
     JOIN stay_type
     ON stay_type.id = homes.stay_type_id
+    ORDER BY homes.dates
     SQL
   )
 
-  display_hash.each do |value|
+  display.each do |value|
     puts "---------"
     puts value
   end
@@ -106,8 +100,6 @@ end
 
 db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
 db.execute("INSERT INTO stay_type (type) VALUES ('housesit')")
-
-db.execute("SELECT * FROM stay_type")
 
 puts "Welcome, Amanda, to your DBC Housing Organizer"
 puts "What do you want to do today? Type one: 'add', 'update', 'display', 'delete' or 'done'."
@@ -142,23 +134,19 @@ while amanda_wants != 'done'
       if update_request == 'name'
         puts "What is the new name?"
         new_name = gets.chomp
-        owner = 'owner'
-        update_existing(db, owner_choice, owner, new_name)
+        update_existing(db, owner_choice, 'owner', new_name)
       elsif update_request == 'address'
         puts "What is the new address?"
         new_address = gets.chomp.upcase
-        address = 'address'
-        update_existing(db, owner_choice, address, new_address)
+        update_existing(db, owner_choice, 'address', new_address)
       elsif update_request == 'city'
         puts "What is the new city?"
         new_city = gets.chomp.upcase
-        city = 'city'
-        update_existing(db, owner_choice, city, new_city)
+        update_existing(db, owner_choice, 'city', new_city)
       else
         puts "What are the new dates of your stay with #{owner_choice}? (ex: 10/1-10/25)"
         new_dates = gets.chomp
-        dates = 'dates'
-        update_existing(db, owner_choice, dates, new_dates)
+        update_existing(db, owner_choice, 'dates', new_dates)
       end
     when 'display'
       display_homes(db)
