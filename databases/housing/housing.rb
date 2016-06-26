@@ -74,7 +74,7 @@ db.execute(create_table_1)
 db.execute(create_table_2)
 db.execute(create_table_3)
 
-def add_new (db, owner_new, address_new, city_new, dates_new, stay_type)
+def add_new_home (db, owner_new, address_new, city_new, dates_new, stay_type)
   db.execute("INSERT INTO homes (owner, address, city, dates, stay_type_id) VALUES (?, ?, ?, ?, ?)", [owner_new, address_new, city_new, dates_new, stay_type])
 end
 
@@ -125,7 +125,7 @@ while amanda_wants != 'done'
       else
         stay_id = 2
       end
-      add_new(db, owner_new, address_new, city_new, dates_new, stay_id)
+      add_new_home(db, owner_new, address_new, city_new, dates_new, stay_id)
     when 'update'
       puts 'What home owner would you like to update?'
       owner_choice = gets.chomp
@@ -164,3 +164,21 @@ puts ""
 puts "----------------------"
 display_homes(db)
 puts "----------------------"
+
+puts "Are there any pets for your housesitting gigs? 'yes' or 'no'"
+answer = gets.chomp
+
+if answer == 'yes'
+  puts "What is the pet's name?"
+  pet_name = gets.chomp.capitalize
+  puts "What kind of animal is #{pet_name}?"
+  type = gets.chomp.downcase
+  puts "What are #{pet_name}'s daily needs?"
+  needs = gets.chomp.downcase
+
+  db.execute("INSERT INTO petcare (pet_name, type, needs) VALUES (?, ?, ?)", [pet_name, type, needs])
+else
+  puts "Perhaps their favorite pets are ceramic."
+end
+
+p db.execute("SELECT * FROM petcare")
