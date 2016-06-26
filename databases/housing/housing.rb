@@ -62,8 +62,7 @@ SQL
 create_table_2 = <<-SQL
   CREATE TABLE IF NOT EXISTS stay_type(
   id INTEGER PRIMARY KEY,
-  type VARCHAR(255),
-  home_id VARCHAR(255)
+  type VARCHAR(255)
   )
 SQL
 
@@ -90,8 +89,8 @@ def update_existing (db, name_to_update, value_to_update, updated_value)
   db.execute("UPDATE homes SET #{value_to_update}= ? WHERE owner = ?",[updated_value, name_to_update])
 end
 
-# db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
-# db.execute("INSERT INTO stay_type (type) VALUES ('housesit')")
+db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
+db.execute("INSERT INTO stay_type (type) VALUES ('housesit')")
 
 db.execute("SELECT * FROM stay_type")
 
@@ -154,17 +153,13 @@ puts "Here is a table of your DBC housing:"
 puts ""
 puts "----------------------"
 
-puts db.execute("SELECT * FROM homes")
+puts db.execute(<<-SQL
+  SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
+  FROM homes
+  JOIN stay_type
+  ON stay_type.id = homes.stay_type_id
+SQL
+)
+# puts db.execute("SELECT * FROM homes")
 
 puts "----------------------"
-# when 'display'
-# when 'delete'
-# end
-
-# db.execute(<<-SQL
-#   SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
-#   FROM homes
-#   JOIN stay_type
-#   ON homes.id = stay_type.home_id
-# SQL
-# )
