@@ -2,12 +2,11 @@
 
 # require sqlite3 gem
 
-require 'sqlite3'
 ### TABLES ###
 # create a sqlite3 database to hold info about my DBC housing: housing.db
 # create two tables 
   #one (stay_type) delineates if the stay is a homestay or a housesit
-  #two (owner) holds all info for the homestay including
+  #two (home) holds all info for the homestay including
     #owner_name
     #address
     #city
@@ -20,7 +19,7 @@ require 'sqlite3'
     #owner_id would be a FOREIGN KEY
 
 ### NEED TO RESEARCH THREE TABLES AND PRIMARY/FOREIGN KEYS
-### QUESTION: DO I NED TO HAVE ONLY ONE TABLE BE PRIMARY? OR CAN TABLE 1 BE PRIMARY TO TABLE TWO
+### QUESTION: DO I NEED TO HAVE ONLY ONE TABLE BE PRIMARY? OR CAN TABLE 1 BE PRIMARY TO TABLE TWO
 ### AND TABLE TWO BE PRIMARY FOR TABLE 3?
 
 ### USER INTERFACE ###
@@ -43,3 +42,112 @@ require 'sqlite3'
 # display method? maybe not necessary? maybe able to do this directly in case/if statement
 # delete method
 # method that shows readable table at end of program and then exits the program
+
+require 'sqlite3' 
+
+db = SQLite3::Database.new("homes.db")
+
+create_table_1 = <<-SQL
+  CREATE TABLE IF NOT EXISTS homes(
+  id INTEGER PRIMARY KEY,
+  owner VARCHAR(255),
+  address VARCHAR(255),
+  city  VARCHAR(255),
+  dates VARCHAR(255)
+  )
+SQL
+
+create_table_2 = <<-SQL
+  CREATE TABLE IF NOT EXISTS stay_type(
+  id INTEGER PRIMARY KEY,
+  type VARCHAR(255),
+  home_id VARCHAR(255),
+  FOREIGN KEY (home_id) REFERENCES homes(id)
+  )
+SQL
+
+create_table_3 = <<-SQL
+  CREATE TABLE IF NOT EXISTS petcare(
+  id INTEGER PRIMARY KEY,
+  pet_name VARCHAR(255),
+  type VARCHAR(255),
+  needs VARCHAR(255),
+  home_id INT,
+  FOREIGN KEY (home_id) REFERENCES homes(id)
+  )
+ SQL
+
+db.execute(create_table_1)
+db.execute(create_table_2)
+db.execute(create_table_3)
+
+def add_new (db, owner_new, address_new, city_new, dates_new)
+  db.execute("INSERT INTO homes (owner, address, city, dates) VALUES (?, ?, ?, ?)", [owner_new, address_new, city_new, dates_new])
+end
+
+# def update_existing (db, name_to_update, value_to_update, updated_value)
+#   db.execute("UPDATE homes SET #{value_to_update}= ? WHERE ?"[updated_value, name_to_update])
+# end
+
+# db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
+# db.execute("INSERT INTO stay_type (type) VALUES ('housesit')")
+
+db.execute("SELECT * FROM stay_type")
+
+puts "Welcome, Amanda, to your DBC Housing Organizer"
+puts "What do you want to do today? Type one: 'add', 'update', 'display', or 'delete'."
+
+amanda_wants = gets.chomp.downcase
+
+case amanda_wants
+  when 'add'
+    puts "Add the name of the home owner:"
+    owner_new = gets.chomp.upcase
+    puts "Add the street address:"
+    address_new = gets.chomp.upcase
+    puts "Add the city:"
+    city_new = gets.chomp.upcase
+    puts "Add the range of dates you'll be staying (ex: 10/1-10/25):"
+    dates_new = gets.chomp
+    puts "Will this be a homestay or a housesit?"
+    stay_id = gets.chomp
+    if stay_id == 'homestay'
+      stay_id = 1
+    else
+      stay_id = 2
+    end
+    add_new(db, owner_new, address_new, city_new, dates_new)
+  # when 'update'
+  #   puts 'What home owner would you like to update?'
+  #   owner_choice = gets.chomp
+  #   puts 'Choose one of the following to update: name, address, city, dates'
+  #   update_request = gets.chomp
+  #   if update_request == 'name'
+  #     puts "What is the new name?"
+  #     new_name = gets.chomp
+  #     owner = 'owner'
+  #     update_existing(db, owner_choice, owner, new_name)
+  #   # elsif update_request == 'address'
+  #   # elsif update_request == 'city'
+  #   # else
+  #   end
+end
+
+puts "Here is a table of your DBC housing:"
+puts ""
+puts "----------------------"
+
+puts db.execute("SELECT * FROM homes")
+
+puts "----------------------"
+# when 'display'
+# when 'delete'
+# end
+
+# db.execute(<<-SQL
+#   SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
+#   FROM homes
+#   JOIN stay_type
+#   ON homes.id = stay_type.home_id
+# SQL
+# )
