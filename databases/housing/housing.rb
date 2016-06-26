@@ -86,7 +86,7 @@ def add_new (db, owner_new, address_new, city_new, dates_new)
 end
 
 def update_existing (db, name_to_update, value_to_update, updated_value)
-  db.execute("UPDATE homes SET #{value_to_update}= ? WHERE #{value_to_update}= ?",[updated_value, name_to_update])
+  db.execute("UPDATE homes SET #{value_to_update}= ? WHERE owner = ?",[updated_value, name_to_update])
 end
 
 # db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
@@ -127,7 +127,11 @@ case amanda_wants
       new_name = gets.chomp
       owner = 'owner'
       update_existing(db, owner_choice, owner, new_name)
-    # elsif update_request == 'address'
+    else update_request == 'address'
+      puts "What is the new address?"
+      new_address = gets.chomp
+      address = 'address'
+      update_existing(db, owner_choice, address, new_address)
     # elsif update_request == 'city'
     # else
     end
