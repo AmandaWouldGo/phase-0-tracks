@@ -127,13 +127,21 @@ case amanda_wants
       new_name = gets.chomp
       owner = 'owner'
       update_existing(db, owner_choice, owner, new_name)
-    else update_request == 'address'
+    elsif update_request == 'address'
       puts "What is the new address?"
       new_address = gets.chomp
       address = 'address'
       update_existing(db, owner_choice, address, new_address)
-    # elsif update_request == 'city'
-    # else
+    elsif update_request == 'city'
+      puts "What is the new city?"
+      new_city = gets.chomp
+      city = 'city'
+      update_existing(db, owner_choice, city, new_city)
+    else
+      puts "What are the new dates of your stay with #{owner_choice}? (ex: 10/1-10/25)"
+      new_dates = gets.chomp
+      dates = 'dates'
+      update_existing(db, owner_choice, dates, new_dates)
     end
 end
 
