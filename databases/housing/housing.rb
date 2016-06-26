@@ -11,16 +11,10 @@
     #address
     #city
     #dates
-    #stay_type_id would be a FOREIGN_KEY
   #possible 3rd table (pets) holds info for housesit including
     #pet_name
     #type
     #notes
-    #owner_id would be a FOREIGN KEY
-
-### NEED TO RESEARCH THREE TABLES AND PRIMARY/FOREIGN KEYS
-### QUESTION: DO I NEED TO HAVE ONLY ONE TABLE BE PRIMARY? OR CAN TABLE 1 BE PRIMARY TO TABLE TWO
-### AND TABLE TWO BE PRIMARY FOR TABLE 3?
 
 ### USER INTERFACE ###
 # add user interface (I'm the only user for now!)
@@ -37,11 +31,10 @@
 ### METHODS ###
 # need methods that add info into table/s
   # __.execute(<sqlite3 code here>)
-# add method?
+# add method
 # update method
-# display method? maybe not necessary? maybe able to do this directly in case/if statement
+# display method
 # delete method
-# method that shows readable table at end of program and then exits the program
 
 require 'sqlite3' 
 
@@ -81,7 +74,7 @@ db.execute(create_table_1)
 db.execute(create_table_2)
 db.execute(create_table_3)
 
-def add_new (db, owner_new, address_new, city_new, dates_new, stay_type)
+def add_new_home (db, owner_new, address_new, city_new, dates_new, stay_type)
   db.execute("INSERT INTO homes (owner, address, city, dates, stay_type_id) VALUES (?, ?, ?, ?, ?)", [owner_new, address_new, city_new, dates_new, stay_type])
 end
 
@@ -90,81 +83,102 @@ def update_existing (db, name_to_update, value_to_update, updated_value)
 end
 
 def display_homes (db)
-  puts db.execute(<<-SQL
+  display = db.execute(<<-SQL
     SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
     FROM homes
     JOIN stay_type
     ON stay_type.id = homes.stay_type_id
-  SQL
-)
+    ORDER BY homes.dates
+    SQL
+  )
 
+  display.each do |value|
+    puts "---------"
+    puts value
+  end
 end
 
 db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
 db.execute("INSERT INTO stay_type (type) VALUES ('housesit')")
 
-db.execute("SELECT * FROM stay_type")
-
 puts "Welcome, Amanda, to your DBC Housing Organizer"
-puts "What do you want to do today? Type one: 'add', 'update', 'display', or 'delete'."
+puts "What do you want to do today? Type one: 'add', 'update', 'display', 'delete' or 'done'."
 
-amanda_wants = gets.chomp.downcase
+amanda_wants = ""
+while amanda_wants != 'done'
+  amanda_wants = gets.chomp.downcase
+  break if amanda_wants == 'done'
+  case amanda_wants
+    when 'add'
+      puts "Add the name of the home owner:"
+      owner_new = gets.chomp
+      puts "Add the street address:"
+      address_new = gets.chomp.upcase
+      puts "Add the city:"
+      city_new = gets.chomp.upcase
+      puts "Add the range of dates you'll be staying (ex: 10/1-10/25):"
+      dates_new = gets.chomp
+      puts "Will this be a homestay or a housesit?"
+      stay_id = gets.chomp
+      if stay_id == 'homestay'
+        stay_id = 1
+      else
+        stay_id = 2
+      end
+      add_new_home(db, owner_new, address_new, city_new, dates_new, stay_id)
+    when 'update'
+      puts 'What home owner would you like to update?'
+      owner_choice = gets.chomp
+      puts 'Choose one of the following to update: name, address, city, dates'
+      update_request = gets.chomp
+      if update_request == 'name'
+        puts "What is the new name?"
+        new_name = gets.chomp
+        update_existing(db, owner_choice, 'owner', new_name)
+      elsif update_request == 'address'
+        puts "What is the new address?"
+        new_address = gets.chomp.upcase
+        update_existing(db, owner_choice, 'address', new_address)
+      elsif update_request == 'city'
+        puts "What is the new city?"
+        new_city = gets.chomp.upcase
+        update_existing(db, owner_choice, 'city', new_city)
+      else
+        puts "What are the new dates of your stay with #{owner_choice}? (ex: 10/1-10/25)"
+        new_dates = gets.chomp
+        update_existing(db, owner_choice, 'dates', new_dates)
+      end
+    when 'display'
+      display_homes(db)
+    when 'delete'
+      puts 'What home owner would you like to delete?'
+      owner_choice = gets.chomp
+      db.execute("DELETE FROM homes WHERE owner = ?", [owner_choice])
+  end
 
-case amanda_wants
-  when 'add'
-    puts "Add the name of the home owner:"
-    owner_new = gets.chomp
-    puts "Add the street address:"
-    address_new = gets.chomp.upcase
-    puts "Add the city:"
-    city_new = gets.chomp.upcase
-    puts "Add the range of dates you'll be staying (ex: 10/1-10/25):"
-    dates_new = gets.chomp
-    puts "Will this be a homestay or a housesit?"
-    stay_id = gets.chomp
-    if stay_id == 'homestay'
-      stay_id = 1
-    else
-      stay_id = 2
-    end
-    add_new(db, owner_new, address_new, city_new, dates_new, stay_id)
-  when 'update'
-    puts 'What home owner would you like to update?'
-    owner_choice = gets.chomp
-    puts 'Choose one of the following to update: name, address, city, dates'
-    update_request = gets.chomp
-    if update_request == 'name'
-      puts "What is the new name?"
-      new_name = gets.chomp
-      owner = 'owner'
-      update_existing(db, owner_choice, owner, new_name)
-    elsif update_request == 'address'
-      puts "What is the new address?"
-      new_address = gets.chomp
-      address = 'address'
-      update_existing(db, owner_choice, address, new_address)
-    elsif update_request == 'city'
-      puts "What is the new city?"
-      new_city = gets.chomp
-      city = 'city'
-      update_existing(db, owner_choice, city, new_city)
-    else
-      puts "What are the new dates of your stay with #{owner_choice}? (ex: 10/1-10/25)"
-      new_dates = gets.chomp
-      dates = 'dates'
-      update_existing(db, owner_choice, dates, new_dates)
-    end
-  when 'delete'
-    puts 'What home owner would you like to delete?'
-    owner_choice = gets.chomp
-    db.execute("DELETE FROM homes WHERE owner = ?", [owner_choice])
+  puts "Would you like to do anything else? Type one: 'add', 'update', 'display', 'delete' or 'done'."
 end
 
 puts "Here is a table of your DBC housing:"
 puts ""
 puts "----------------------"
-
 display_homes(db)
-# puts db.execute("SELECT * FROM homes")
-
 puts "----------------------"
+
+puts "Are there any pets for your housesitting gigs? 'yes' or 'no'"
+answer = gets.chomp
+
+if answer == 'yes'
+  puts "What is the pet's name?"
+  pet_name = gets.chomp.capitalize
+  puts "What kind of animal is #{pet_name}?"
+  type = gets.chomp.downcase
+  puts "What are #{pet_name}'s daily needs?"
+  needs = gets.chomp.downcase
+
+  db.execute("INSERT INTO petcare (pet_name, type, needs) VALUES (?, ?, ?)", [pet_name, type, needs])
+else
+  puts "Perhaps their favorite pets are ceramic."
+end
+
+p db.execute("SELECT * FROM petcare")
