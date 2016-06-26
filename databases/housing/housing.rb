@@ -89,6 +89,17 @@ def update_existing (db, name_to_update, value_to_update, updated_value)
   db.execute("UPDATE homes SET #{value_to_update}= ? WHERE owner = ?",[updated_value, name_to_update])
 end
 
+def display_homes (db)
+  puts db.execute(<<-SQL
+    SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
+    FROM homes
+    JOIN stay_type
+    ON stay_type.id = homes.stay_type_id
+  SQL
+)
+
+end
+
 db.execute("INSERT INTO stay_type (type) VALUES ('homestay')")
 db.execute("INSERT INTO stay_type (type) VALUES ('housesit')")
 
@@ -153,13 +164,7 @@ puts "Here is a table of your DBC housing:"
 puts ""
 puts "----------------------"
 
-puts db.execute(<<-SQL
-  SELECT homes.dates, stay_type.type, homes.owner, homes.address, homes.city
-  FROM homes
-  JOIN stay_type
-  ON stay_type.id = homes.stay_type_id
-SQL
-)
+display_homes(db)
 # puts db.execute("SELECT * FROM homes")
 
 puts "----------------------"
