@@ -46,12 +46,12 @@ create_table_1 = <<-SQL
   owner VARCHAR(255),
   address VARCHAR(255),
   city  VARCHAR(255),
-  dates VARCHAR(255)
+  dates VARCHAR(255),
   stay_type_id INT,
   FOREIGN KEY (stay_type_id) REFERENCES stay_type(id)
   )
 SQL
-######## START HERE TO FIGURE FOREIGN KEYS OUT!!! NEED HOME TO CONNECT TO STAY_TYPE O:M AND HOMES TO CONNECT TO PETCARE O:M ########
+
 create_table_2 = <<-SQL
   CREATE TABLE IF NOT EXISTS stay_type(
   id INTEGER PRIMARY KEY,
@@ -88,13 +88,27 @@ def display_homes (db)
     FROM homes
     JOIN stay_type
     ON stay_type.id = homes.stay_type_id
-    ORDER BY homes.dates
     SQL
   )
 
   display.each do |value|
     puts "---------"
     puts value
+  end
+end
+
+def pets (db)
+  display_pets = db.execute(<<-SQL
+    SELECT homes.owner, petcare.pet_name, petcare.type, petcare.needs
+    FROM homes
+    JOIN petcare
+    ON homes.id = petcare.home_id
+  SQL
+  )
+
+  display_pets.each do |pet|
+    puts "----------"
+    puts pet
   end
 end
 
@@ -166,19 +180,23 @@ display_homes(db)
 puts "----------------------"
 
 puts "Are there any pets for your housesitting gigs? 'yes' or 'no'"
-answer = gets.chomp
 
-if answer == 'yes'
-  puts "What is the pet's name?"
-  pet_name = gets.chomp.capitalize
-  puts "What kind of animal is #{pet_name}?"
-  type = gets.chomp.downcase
-  puts "What are #{pet_name}'s daily needs?"
-  needs = gets.chomp.downcase
-
-  db.execute("INSERT INTO petcare (pet_name, type, needs) VALUES (?, ?, ?)", [pet_name, type, needs])
-else
-  puts "Perhaps their favorite pets are ceramic."
+answer = ""
+while answer != 'no'
+  answer = gets.chomp.downcase
+  break if answer == 'no'
+  if answer == 'yes'
+    puts "Who's pet will you add?"
+    pet_owner = gets.chomp
+    pet_owner = db.execute("SELECT id FROM homes WHERE owner = ?", [pet_owner])
+    puts "What is the pet's name?"
+    pet_name = gets.chomp.capitalize
+    puts "What kind of animal is #{pet_name}?"
+    type = gets.chomp.downcase
+    puts "What are #{pet_name}'s daily needs?"
+    needs = gets.chomp.downcase
+    db.execute("INSERT INTO petcare (pet_name, type, needs, home_id) VALUES (?, ?, ?, ?)", [pet_name, type, needs, pet_owner])
+  end
+  puts "Are there any other pets? 'yes' or 'no'"
 end
-
-p db.execute("SELECT * FROM petcare")
+pets(db)
