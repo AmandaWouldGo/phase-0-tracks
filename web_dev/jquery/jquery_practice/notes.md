@@ -1,0 +1,3 @@
+I will use Google to find  a few resources. I will glance a few over to see what might work best for me. I will not spend too much time on any one thing, but treat each item as a resource that can be saved and used as reference later. I will definitely watch a video or two so that I can hear someone describe some JQuery basics.
+
+try.jquery.com was super helpful. I didn't stick around to take the entire course, but I watched a few vids and downloaded their slide show. I also watched a "Learn JQuery in 15 minutes" video on YouTube. My strongest learning style is auditory, so it helps me to either listen to someone explain something to me or read something out loud to myself. 
