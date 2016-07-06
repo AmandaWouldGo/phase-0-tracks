@@ -54,12 +54,10 @@ get '/contact/:address' do
   "Her is address is #{address}."
 end
 
-get '/great_job/students/:name' do 
+get '/great_job' do 
   name = params[:name]
-  student = db.execute("SELECT name FROM students WHERE name LIKE ?", [name])[0]
-  student.to_s
-  if student.include? "#{name}"
-    "Great job, #{student}"
+  if name
+    "Great job, #{name}"
   else
     "Good job!"
   end
