@@ -42,5 +42,30 @@ end
 
 get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
+  if student = student
+    student.to_s
+  else
+    "There isn't a student with that ID"
+  end
+end
+
+get '/contact/:address' do 
+  address = params[:address]
+  "Her is address is #{address}."
+end
+
+get '/great_job/students/:name' do 
+  name = params[:name]
+  student = db.execute("SELECT name FROM students WHERE name LIKE ?", [name])[0]
   student.to_s
+  if student.include? "#{name}"
+    "Great job, #{student}"
+  else
+    "Good job!"
+  end
+end
+
+get 'add/:number1/:number2' do
+  total = params[:number1].to_i + params[:number2].to_i
+  "#{total}"
 end
